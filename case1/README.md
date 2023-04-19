@@ -1,4 +1,4 @@
-######### Case 1: Extract from JSON Parsing in Contiki-NG-IoT.
+# Case 1: Extract from JSON Parsing in Contiki-NG-IoT.
 
 The Json Parson is implemented with a stack abstraction **struct jsonparse_state *state**. This is a global variable that is used in push, modify, pop, atomic, skip_ws, is_atomic, jsonparse_setup, jsonparse_next, jsonparse_copy_value, jsonparse_get_value_as_int, jsonparse_get_value_as_long, jsonparse_strcmp_value, jsonparse_get_len, jsonparse_get_type, and jsonparse_has_next functions of file **jsonparse.c**.
 
