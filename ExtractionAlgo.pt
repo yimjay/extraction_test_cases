@@ -26,9 +26,17 @@ foreach non_local_data = CODE.TypeInfo#(var_i,type,_) \in inputCode do
      new_abstraction_worklist = MAP{};
      new_abstraction_worklist[map_counter] = var_i; 
 
+     <** what i was asking about?? - while new_abstraction_worklist is not empty do **>
      for (p_input = new_abstraction_worklist; p_input != NULL; p_input = TAIL(p_input)) {
-        <** XFORM.InsertIntoMap(already_done, var_i); **>
+        
+        <** THE POP -  var = pop_from(new_abstraction_worklist); ??**>
+        <** XFORM.InsertIntoMap(already_done, p_input); **>
+        
+        <**
+          foreach p_input \in inputCode do
 
+          enddo
+        **>
           print(p_input);
      }
 
@@ -37,8 +45,6 @@ foreach non_local_data = CODE.TypeInfo#(var_i,type,_) \in inputCode do
 
      map_counter += 1;
 enddo
-
- <** print(all_abstractions); **>
 
 />
 
