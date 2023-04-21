@@ -1,4 +1,4 @@
-<********** Exatraction Implementation
+<********** Extraction Implementation
 
 pcg -pinputFile=jsonparse.h -poutputFile=myoutput.txt ExtractionAlgo.pt
 
@@ -82,4 +82,4 @@ enddo
    return "";
 </xform>
 
-<********** PRINT(inputCode) The Identity Translator ****************>
+<********** ****************>
