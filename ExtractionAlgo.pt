@@ -1,0 +1,84 @@
+<********** The Identity Translator ****************>
+<parameter inputFile default="" message="input file name" />
+<parameter inputLang default="Cfront.code" message="file name for input language syntax" />
+<parameter outputFile default="" message="output file name" />
+
+<input from=inputFile syntax=(inputLang) to=inputCode/>
+<output to=outputFile syntax=(inputLang) from=inputCode/>
+<eval
+
+
+     XFORM.ExtractionAlgo(inputCode);
+/>
+
+<xform ExtractionAlgo pars=(theInputFile)>
+     already_done = MAP{};
+     all_abstractions = MAP{};
+     map_counter = 0;
+
+     foreach non_local_data = CODE.TypeInfo#(var_i,type,_) \in theInputFile do
+
+          if(XFORM.AlreadyInMap(var_i, already_done)){
+               continue;
+          }
+
+          new_abstraction = MAP{};
+          new_abstraction_worklist = MAP{};
+          new_abstraction_worklist[map_counter] = var_i; 
+
+     <<*TODO:: while new_abstraction_worklist is not empty do; ?? *>>
+     <<* TODO:: The pop -  var = pop_from(new_abstraction_worklist); ?? *>>
+     <**
+          for (p_input = new_abstraction_worklist; p_input != NULL; p_input = TAIL(p_input)) {
+              
+               
+               XFORM.InsertIntoMap(already_done, p_input);
+
+               foreach p_input \in inputCode do
+
+               enddo
+               print(p_input);
+          }
+     **>
+
+     XFORM.InsertMapIntoMap(all_abstractions, new_abstraction_worklist); 
+
+          map_counter += 1;
+     enddo
+
+     print(all_abstractions); 
+</xform>
+
+<xform AlreadyInMap pars=(elem, amap)>
+  isTrue = 0;
+     foreach cur=(from=_,to=_) \in amap do
+          if(elem : to){
+               isTrue = 1;
+               break;
+          }
+     enddo
+   return isTrue;
+</xform>
+
+<xform InsertMapIntoMap pars=(amap, new_data)>
+     counter = LEN(amap);
+
+     foreach cur=(from=_,to=_) \in new_data do
+          amap[counter] = to;  
+          counter += 1;       
+     enddo
+
+   return amap;
+</xform>
+
+<xform InsertIntoMap pars=(amap, new_data)>
+     counter = LEN(amap);
+     amap[counter] = new_data;     
+     return amap;
+</xform>
+
+<xform PopMap pars=(amap)>
+   return "";
+</xform>
+
+<********** PRINT(inputCode) The Identity Translator ****************>
