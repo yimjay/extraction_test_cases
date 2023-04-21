@@ -41,7 +41,7 @@ foreach non_local_data = CODE.TypeInfo#(var_i,type,_) \in inputCode do
      }
 
 
-     XFORM.InsertMapIntoMap(all_abstractions, new_abstraction_worklist);
+     all_abstractions = all_abstractions :: new_abstraction_worklist;
 
      map_counter += 1;
 enddo
@@ -59,17 +59,6 @@ enddo
           }
      enddo
    return isTrue;
-</xform>
-
-<xform InsertMapIntoMap pars=(amap, new_data)>
-     counter = LEN(amap);
-
-     foreach cur=(from=_,to=_) \in new_data do
-          amap[counter] = to;  
-          counter += 1;       
-     enddo
-
-   return amap;
 </xform>
 
 <xform InsertIntoMap pars=(amap, new_data)>
